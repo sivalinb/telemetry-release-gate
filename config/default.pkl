@@ -1,0 +1,33 @@
+module TelemetryGate
+project: String = "telemetry-release-gate"
+cpus: Int(this >= 1 && this <= 8) = 1
+memoryMb: Int(this >= 256 && this <= 8192) = 512
+timeoutSeconds: Int(this >= 5 && this <= 180) = 60
+batchTimeoutMs: Int(this >= 100 && this <= 10000) = 1000
+scrapeIntervalSeconds: Int(this >= 1 && this <= 60) = 1
+class Metric {
+  name: String
+  kind: "counter" | "gauge"
+  owner: String(!isEmpty)
+  allowedLabels: Listing<String>
+  requiredLabels: Listing<String>
+  maxSeries: Int(this > 0)
+}
+metrics: Listing<Metric> = new {
+  new Metric {
+    name = "lab_requests_total"
+    kind = "counter"
+    owner = "platform"
+    allowedLabels = new { "route"; "status"; "job" }
+    requiredLabels = new { "route" }
+    maxSeries = 8
+  }
+  new Metric {
+    name = "lab_queue_depth"
+    kind = "gauge"
+    owner = "platform"
+    allowedLabels = new { "queue"; "job" }
+    requiredLabels = new { "queue" }
+    maxSeries = 4
+  }
+}

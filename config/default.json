@@ -1,0 +1,40 @@
+{
+  "source_sha256": "6ae6ee4aaa04d99e61f955ce5f03c6afde29dde9c4f1693ee4276e8478778697",
+  "config": {
+    "project": "telemetry-release-gate",
+    "cpus": 1,
+    "memoryMb": 512,
+    "timeoutSeconds": 60,
+    "batchTimeoutMs": 1000,
+    "scrapeIntervalSeconds": 1,
+    "metrics": [
+      {
+        "name": "lab_requests_total",
+        "kind": "counter",
+        "owner": "platform",
+        "allowedLabels": [
+          "route",
+          "status",
+          "job"
+        ],
+        "requiredLabels": [
+          "route"
+        ],
+        "maxSeries": 8
+      },
+      {
+        "name": "lab_queue_depth",
+        "kind": "gauge",
+        "owner": "platform",
+        "allowedLabels": [
+          "queue",
+          "job"
+        ],
+        "requiredLabels": [
+          "queue"
+        ],
+        "maxSeries": 4
+      }
+    ]
+  }
+}

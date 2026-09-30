@@ -1,0 +1,6 @@
+{
+  "slug": "telemetry-release-gate",
+  "title": "Telemetry Release Gate",
+  "description": "Validate telemetry contracts before a release.",
+  "port": 8501
+}

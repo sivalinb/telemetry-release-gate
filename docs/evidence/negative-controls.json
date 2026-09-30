@@ -1,0 +1,37 @@
+{
+  "unexpected_label": {
+    "passed": true,
+    "findings": [
+      {
+        "check": "unexpected_label",
+        "metric": "lab_requests_total",
+        "detail": "user_id"
+      },
+      {
+        "check": "unexpected_label",
+        "metric": "lab_requests_total",
+        "detail": "user_id"
+      }
+    ]
+  },
+  "missing_metric": {
+    "passed": true,
+    "findings": [
+      {
+        "check": "missing_metric",
+        "metric": "lab_queue_depth",
+        "detail": "Required metric absent"
+      }
+    ]
+  },
+  "cardinality": {
+    "passed": true,
+    "findings": [
+      {
+        "check": "cardinality_budget",
+        "metric": "lab_requests_total",
+        "detail": "20 > 8"
+      }
+    ]
+  }
+}

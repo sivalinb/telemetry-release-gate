@@ -1,0 +1,115 @@
+{
+  "passed": true,
+  "findings": [],
+  "series": {
+    "lab_requests_total": 2,
+    "lab_queue_depth": 1
+  },
+  "samples": [
+    {
+      "name": "lab_queue_depth",
+      "value": 3,
+      "job": "gate-producer",
+      "queue": "default"
+    },
+    {
+      "name": "lab_requests_total",
+      "value": 100,
+      "job": "gate-producer",
+      "route": "/route/0",
+      "status": "200"
+    },
+    {
+      "name": "lab_requests_total",
+      "value": 101,
+      "job": "gate-producer",
+      "route": "/route/1",
+      "status": "200"
+    }
+  ],
+  "scope": "Declared lab_* service metrics; other namespaces excluded",
+  "contract": {
+    "project": "telemetry-release-gate",
+    "cpus": 1,
+    "memoryMb": 512,
+    "timeoutSeconds": 60,
+    "batchTimeoutMs": 1000,
+    "scrapeIntervalSeconds": 1,
+    "metrics": [
+      {
+        "name": "lab_requests_total",
+        "kind": "counter",
+        "owner": "platform",
+        "allowedLabels": [
+          "route",
+          "status",
+          "job"
+        ],
+        "requiredLabels": [
+          "route"
+        ],
+        "maxSeries": 8
+      },
+      {
+        "name": "lab_queue_depth",
+        "kind": "gauge",
+        "owner": "platform",
+        "allowedLabels": [
+          "queue",
+          "job"
+        ],
+        "requiredLabels": [
+          "queue"
+        ],
+        "maxSeries": 4
+      }
+    ]
+  },
+  "mode": "live Apple Container / real OTLP pipeline",
+  "case": "healthy",
+  "prometheus_query": {
+    "status": "success",
+    "data": {
+      "resultType": "vector",
+      "result": [
+        {
+          "metric": {
+            "__name__": "lab_requests_total",
+            "exported_job": "gate-producer",
+            "instance": "PRIVATE_VM_IP:9464",
+            "job": "gate",
+            "route": "/route/0",
+            "status": "200"
+          },
+          "value": [
+            1790740432.209,
+            "100"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "lab_requests_total",
+            "exported_job": "gate-producer",
+            "instance": "PRIVATE_VM_IP:9464",
+            "job": "gate",
+            "route": "/route/1",
+            "status": "200"
+          },
+          "value": [
+            1790740432.209,
+            "101"
+          ]
+        }
+      ]
+    }
+  },
+  "images": [
+    "otel/opentelemetry-collector-contrib:0.120.0",
+    "prom/prometheus:v3.2.1",
+    "python:3.12-slim"
+  ],
+  "config_provenance": {
+    "mode": "Pkl evaluated",
+    "sha256": "6ae6ee4aaa04d99e61f955ce5f03c6afde29dde9c4f1693ee4276e8478778697"
+  }
+}

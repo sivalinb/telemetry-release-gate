@@ -1,0 +1,52 @@
+{
+  "verification_date_utc": "2026-09-30",
+  "os": "macOS 26.6.2",
+  "architecture": "arm64",
+  "python": "3.12.14",
+  "pkl": "0.32.1",
+  "apple_container": "1.5.0",
+  "images": {
+    "docker.io/library/python:3.12-slim": {
+      "index_digest": "sha256:f77ac9e44ae96ef2c90b8053ea08c31f8be030f824196b0ae4db6d462c84e51f",
+      "variants": [
+        {
+          "platform": {
+            "architecture": "arm64",
+            "os": "linux",
+            "variant": "v8"
+          },
+          "digest": "sha256:950206c37262dd86c55659797f6ee418fee30535072f65a82ed470d985f5cda5",
+          "version": null
+        }
+      ]
+    },
+    "docker.io/otel/opentelemetry-collector-contrib:0.120.0": {
+      "index_digest": "sha256:85ac41c2db88d0df9bd6145e608a3cb023f5d8443868adbfbbf66efb51087917",
+      "variants": [
+        {
+          "platform": {
+            "architecture": "arm64",
+            "os": "linux"
+          },
+          "digest": "sha256:ace1a28fb5f4a008138cf3dc0a2e57d30309c93b1c3c1b92e715b0319de28ab6",
+          "version": "0.120.0"
+        }
+      ]
+    },
+    "docker.io/prom/prometheus:v3.2.1": {
+      "index_digest": "sha256:6927e0919a144aa7616fd0137d4816816d42f6b816de3af269ab065250859a62",
+      "variants": [
+        {
+          "platform": {
+            "architecture": "arm64",
+            "os": "linux",
+            "variant": "v8"
+          },
+          "digest": "sha256:641f5faf625e3c667e2fb75b89a8a1dbc59a564f982f725fffb314f9293ab150",
+          "version": null
+        }
+      ]
+    }
+  },
+  "note": "Single local development machine; not a controlled hardware benchmark."
+}
